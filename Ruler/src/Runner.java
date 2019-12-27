@@ -1,5 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -291,7 +294,9 @@ public class Runner {
 			if (convert.equals(Unit.Inches)) {
 				return ToFraction64(result);
 			}
-			return Double.toString(result);
+			DecimalFormat df = new DecimalFormat("#.####");
+			df.setRoundingMode(RoundingMode.CEILING);
+			return df.format(result);
 		}
 
 		private static String ToFraction64(double value) {
